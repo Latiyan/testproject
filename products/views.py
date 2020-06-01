@@ -14,7 +14,7 @@ def index(request):
 
 def listing(request):
     context = {
-        #
+        'products': Products.objects.all()
     }
 
     return render(request, 'listing.html', context)
