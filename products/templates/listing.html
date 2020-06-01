@@ -30,6 +30,7 @@ tr:nth-child(even){background-color: #f2f2f2}
         <td>{{ product.price }}</td>
         <td>{{ product.date_created }}</td>
         <td><a href="/edit/{{ product.id }}">Edit</a></td>
+        <td><a href="/delete/{{ product.id }}">Delete</a></td>
     </tr>
     {% endfor %}
 </table>

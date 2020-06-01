@@ -49,3 +49,9 @@ def update(request, id):
     product.save()
 
     return redirect('/listing')
+
+def delete(request, id):
+    product = Products.objects.get(id=id)
+    product.delete()
+
+    return redirect('/listing')
