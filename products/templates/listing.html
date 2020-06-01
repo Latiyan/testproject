@@ -7,7 +7,21 @@ th, td {text-align: left;padding: 8px;}
 th {background-color: #4CAF50;color: white;}
 tr:nth-child(even){background-color: #f2f2f2}
 
+ul li.search_form {float: right;margin-right: 20px;}
+ul li.search_form form input[name="name"] {padding: 13px;}
+ul li.search_form form button {padding: 13px 50px; font-size: 16px;background-color: #4CAF50;color: #fff;}
+
 {% endblock style %}
+
+{% block menu %}
+<li class="search_form">
+    <form method="POST" action="#">
+        {% csrf_token %}
+        <input type="text" name="name">
+        <button type="submit">Search</button>
+    </form>
+</li>
+{% endblock menu %}
 
 {% block content %}
 
@@ -21,6 +35,7 @@ tr:nth-child(even){background-color: #f2f2f2}
         <th>Price</th>
         <th>Date Created</th>
         <th>Edit</th>
+        <th>Delete</th>
     </tr>
     {% for product in products %}
     <tr>

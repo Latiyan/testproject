@@ -9,9 +9,14 @@ def index(request):
 
 
 def listing(request):
-    context = {
-        'products': Products.objects.all()
-    }
+    if request.method == 'POST':
+        context = {
+            'products': Products.objects.filter(name=request.POST.get('name'))
+        }
+    else:
+        context = {
+            'products': Products.objects.all()
+        }
 
     return render(request, 'listing.html', context)
 
@@ -40,6 +45,7 @@ def addnew(request):
 
     return redirect('/listing')
 
+
 def update(request, id):
     product = Products.objects.get(id=id)
     product.name = request.POST.get('name')
@@ -49,6 +55,7 @@ def update(request, id):
     product.save()
 
     return redirect('/listing')
+
 
 def delete(request, id):
     product = Products.objects.get(id=id)
