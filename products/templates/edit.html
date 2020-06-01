@@ -17,10 +17,10 @@ label {padding: 12px 12px 12px 0;display: inline-block;}
 
 {% block content %}
 
-<h2>Add New Product</h2>
+<h2>Edit Product</h2>
 
 <div class="container">
-    <form method="POST" action="/addnew">
+    <form method="POST" action="/update/{{product.id}}">
         {% csrf_token %}
 
         <div class="row">
@@ -28,7 +28,7 @@ label {padding: 12px 12px 12px 0;display: inline-block;}
                 <label for="name">Product Name:</label>
             </div>
             <div class="col-75">
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" value="{{product.name}}">
             </div>
         </div>
 
@@ -37,7 +37,7 @@ label {padding: 12px 12px 12px 0;display: inline-block;}
                 <label for="description">Product Description:</label>
             </div>
             <div class="col-75">
-                <textarea id="description" name="description"></textarea>
+                <textarea id="description" name="description">{{product.description}}</textarea>
             </div>
         </div>
 
@@ -46,12 +46,12 @@ label {padding: 12px 12px 12px 0;display: inline-block;}
                 <label for="price">Product Price:</label>
             </div>
             <div class="col-75">
-                <input type="number" id="price" name="price" step="0.01" min="0" max="10">
+                <input type="number" id="price" name="price" step="0.01" min="0" max="10" value="{{product.price}}">
             </div>
         </div>
 
         <div class="row mt-20">
-            <input type="submit" value="Add New">
+            <input type="submit" value="Update">
         </div>
     </form>
 </div>

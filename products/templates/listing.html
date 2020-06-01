@@ -20,14 +20,16 @@ tr:nth-child(even){background-color: #f2f2f2}
         <th>Description</th>
         <th>Price</th>
         <th>Date Created</th>
+        <th>Edit</th>
     </tr>
-    {% for item in products %}
+    {% for product in products %}
     <tr>
-        <td>{{ item.id }}</td>
-        <td>{{ item.name }}</td>
-        <td>{{ item.description }}</td>
-        <td>{{ item.price }}</td>
-        <td>{{ item.date_created }}</td>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.date_created }}</td>
+        <td><a href="/edit/{{ product.id }}">Edit</a></td>
     </tr>
     {% endfor %}
 </table>

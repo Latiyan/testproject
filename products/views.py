@@ -5,11 +5,7 @@ from .models import Products
 
 # Create your views here.
 def index(request):
-    context = {
-        #
-    }
-
-    return render(request, 'home.html', context)
+    return render(request, 'home.html')
 
 
 def listing(request):
@@ -21,11 +17,15 @@ def listing(request):
 
 
 def add(request):
+    return render(request, 'add.html')
+
+
+def edit(request, id):
     context = {
-        #
+        'product': Products.objects.get(id=id)
     }
 
-    return render(request, 'add.html', context)
+    return render(request, 'edit.html', context)
 
 
 def addnew(request):
@@ -37,5 +37,15 @@ def addnew(request):
         product = Products(name=name, description=description, price=price, date_created=date_created)
 
         product.save()
+
+    return redirect('/listing')
+
+def update(request, id):
+    product = Products.objects.get(id=id)
+    product.name = request.POST.get('name')
+    product.description = request.POST.get('description')
+    product.price = request.POST.get('price')
+
+    product.save()
 
     return redirect('/listing')
