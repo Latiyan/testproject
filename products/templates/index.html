@@ -9,6 +9,9 @@
     li a {display: block;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}
     li a.active, li a:hover {background-color: #4CAF50;}
 
+    {% block style %}{% endblock style %}
+
+
     </style>
 </head>
 
@@ -19,7 +22,7 @@
     <li><a href="/add">Add New</a></li>
 </ul>
 
-{% block content %}{% endblock %}
+{% block content %}{% endblock content %}
 
 </body>
 
