@@ -8,3 +8,6 @@ class Products(models.Model):
     description = models.TextField()
     price = models.FloatField(max_length=10)
     date_created = models.DateField()
+
+    def  __str__(self):
+        return self.name
